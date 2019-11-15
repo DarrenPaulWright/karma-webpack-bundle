@@ -1,3 +1,3 @@
-export default {
+module.exports = {
 	maxTime: 0.002
 };
