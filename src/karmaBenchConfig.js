@@ -44,10 +44,14 @@ module.exports = function(settings = {}) {
 						loader: 'null-loader'
 					}, {
 						test: /\.js/,
+						exclude: /node_modules/,
 						loader: 'babel-loader'
 					}]
 				},
-				watch: false
+				watch: false,
+				node: {
+					fs: "empty"
+				}
 			},
 			webpackServer: {
 				noInfo: true,
