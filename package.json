@@ -1,0 +1,52 @@
+{
+  "name": "karma-webpack-bundle",
+  "version": "0.0.0",
+  "author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
+  "description": "A personalized bundle of karma libraries and configs",
+  "main": "index.js",
+  "files": [
+    "/src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarrenPaulWright/karma-webpack-bundle.git"
+  },
+  "keywords": [
+    "karma",
+    "webpack",
+    "benchmark"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DarrenPaulWright/karma-webpack-bundle/issues"
+  },
+  "homepage": "https://github.com/DarrenPaulWright/karma-webpack-bundle#readme",
+  "dependencies": {
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^5.2.0",
+    "benchmark": "^2.1.4",
+    "chai": "^4.2.0",
+    "display-value": "^1.3.0",
+    "eslint": "^6.6.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-babel": "^5.3.0",
+    "karma": "^4.4.1",
+    "karma-benchmark": "^1.0.4",
+    "karma-benchmarkjs-reporter": "^1.0.0",
+    "karma-brief-reporter": "0.2.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.1",
+    "karma-coveralls": "^2.1.0",
+    "karma-firefox-launcher": "^1.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-webpack": "^4.0.2",
+    "mocha": "^6.2.2",
+    "test-runner-config": "^1.0.0",
+    "wallaby-webpack": "^3.9.15"
+  }
+}
