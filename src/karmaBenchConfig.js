@@ -28,18 +28,6 @@ module.exports = function(settings = {}) {
 			},
 			webpack: {
 				mode: 'production',
-				optimization: {
-					splitChunks: {
-						cacheGroups: {
-							vendor: {
-								test: /node_modules/,
-								name: 'vendor',
-								maxSize: 244000,
-								chunks: 'all'
-							}
-						}
-					}
-				},
 				module: {
 					rules: [{
 						test: /\.less$/,
@@ -52,7 +40,6 @@ module.exports = function(settings = {}) {
 				}
 			},
 			webpackServer: {
-				noInfo: true,
 				stats: 'errors-only'
 			},
 			...settings

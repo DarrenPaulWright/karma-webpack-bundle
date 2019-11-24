@@ -42,7 +42,6 @@ module.exports = function(testRunnerConfig, settings = {}) {
 						loader: 'null-loader'
 					}, {
 						test: /\.js/,
-						exclude: /node_modules/,
 						loader: 'babel-loader'
 					}]
 				},
