@@ -1,12 +1,14 @@
 const formatBenchmark = require('./formatBenchmark');
 const chalk = require('chalk');
 
+const watch = process.argv.includes('--watch');
+
 module.exports = function(settings = {}) {
 	return function(config) {
 		config.set({
 			frameworks: ['benchmark'],
-			singleRun: true,
-			autoWatch: false,
+			singleRun: !watch,
+			autoWatch: watch,
 			concurrency: 1,
 			browsers: ['ChromeHeadless'],
 			files: ['bench/**/*.bench.js'],
@@ -48,7 +50,7 @@ module.exports = function(settings = {}) {
 						loader: 'babel-loader'
 					}]
 				},
-				watch: false,
+				watch: watch,
 				node: {
 					fs: "empty"
 				}
