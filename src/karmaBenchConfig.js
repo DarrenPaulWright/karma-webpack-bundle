@@ -44,10 +44,6 @@ module.exports = function(settings = {}) {
 					rules: [{
 						test: /\.less$/,
 						loader: 'null-loader'
-					}, {
-						test: /\.js/,
-						exclude: /node_modules/,
-						loader: 'babel-loader'
 					}]
 				},
 				watch: watch,
