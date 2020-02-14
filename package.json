@@ -1,6 +1,6 @@
 {
 	"name": "karma-webpack-bundle",
-	"version": "0.0.8",
+	"version": "0.1.0",
 	"author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
 	"description": "A personalized bundle of karma libraries and configs",
 	"main": "index.js",
