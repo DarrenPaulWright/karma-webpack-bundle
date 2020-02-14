@@ -1,62 +1,65 @@
 {
-  "name": "karma-webpack-bundle",
-  "version": "0.0.8",
-  "author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
-  "description": "A personalized bundle of karma libraries and configs",
-  "main": "index.js",
-  "files": [
-    "/src"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "patch": "npm version patch && npm publish",
-    "minor": "npm version minor && npm publish",
-    "major": "npm version major && npm publish",
-    "postpublish": "git push --follow-tags",
-    "deps": "ncu -u && npm install",
-    "deps-commit": "npm run deps && git add --all && git commit -m \"Updating dependencies\"",
-    "deps-patch": "npm run deps-commit && npm run patch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DarrenPaulWright/karma-webpack-bundle.git"
-  },
-  "keywords": [
-    "karma",
-    "webpack",
-    "benchmark"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/DarrenPaulWright/karma-webpack-bundle/issues"
-  },
-  "homepage": "https://github.com/DarrenPaulWright/karma-webpack-bundle#readme",
-  "dependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-istanbul": "^6.0.0",
-    "benchmark": "^2.1.4",
-    "chai": "^4.2.0",
-    "display-value": "^1.3.2",
-    "eslint": "^6.8.0",
-    "eslint-loader": "^3.0.3",
-    "eslint-plugin-babel": "^5.3.0",
-    "karma": "^4.4.1",
-    "karma-benchmark": "^1.0.4",
-    "karma-benchmarkjs-reporter": "^1.0.0",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-coverage": "^2.0.1",
-    "karma-coveralls": "^2.1.0",
-    "karma-firefox-launcher": "^1.2.0",
-    "karma-mocha": "^1.3.0",
-    "karma-mocha-reporter": "^2.2.5",
-    "karma-webpack": "^4.0.2",
-    "mocha": "^6.2.2",
-    "null-loader": "^3.0.0",
-    "test-runner-config": "^1.0.0",
-    "wallaby-webpack": "^3.9.15",
-    "webpack": "^4.41.4"
-  }
+	"name": "karma-webpack-bundle",
+	"version": "0.0.8",
+	"author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
+	"description": "A personalized bundle of karma libraries and configs",
+	"main": "index.js",
+	"files": [
+		"/src"
+	],
+	"scripts": {
+		"test": "",
+		"preversion": "npm test && npm run docs && git add --all && git diff --staged --quiet || git commit -m \"Updating docs\"",
+		"postversion": "npm publish",
+		"postpublish": "git push --follow-tags",
+		"pre-clean": "rm -rf node_modules && del /f package-lock.json",
+		"clean": "npm run pre-clean && npm install",
+		"deps": "ncu -u && npm install",
+		"deps-clean": "npm run pre-clean && npm run deps",
+		"deps-commit": "npm run deps && npm test && git add --all && git diff --staged --quiet || git commit -m \"Updating dependencies\"",
+		"deps-patch": "npm run deps-commit && npm version patch",
+		"docs": ""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DarrenPaulWright/karma-webpack-bundle.git"
+	},
+	"keywords": [
+		"karma",
+		"webpack",
+		"benchmark"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/DarrenPaulWright/karma-webpack-bundle/issues"
+	},
+	"homepage": "https://github.com/DarrenPaulWright/karma-webpack-bundle#readme",
+	"dependencies": {
+		"@babel/core": "^7.8.4",
+		"@babel/preset-env": "^7.8.4",
+		"babel-eslint": "^10.0.3",
+		"babel-loader": "^8.0.6",
+		"babel-plugin-istanbul": "^6.0.0",
+		"benchmark": "^2.1.4",
+		"display-value": "^1.3.2",
+		"eslint": "^6.8.0",
+		"eslint-loader": "^3.0.3",
+		"eslint-plugin-babel": "^5.3.0",
+		"karma": "^4.4.1",
+		"karma-benchmark": "^1.0.4",
+		"karma-benchmarkjs-reporter": "^1.0.0",
+		"karma-chrome-launcher": "^3.1.0",
+		"karma-coverage": "^2.0.1",
+		"karma-coveralls": "^2.1.0",
+		"karma-firefox-launcher": "^1.3.0",
+		"karma-mocha": "^1.3.0",
+		"karma-mocha-reporter": "^2.2.5",
+		"karma-webpack": "^4.0.2",
+		"mocha": "^7.0.1",
+		"null-loader": "^3.0.0",
+		"test-runner-config": "^1.0.0",
+		"type-enforcer": "^1.1.0",
+		"wallaby-webpack": "^3.9.15",
+		"webpack": "^4.41.6"
+	}
 }
