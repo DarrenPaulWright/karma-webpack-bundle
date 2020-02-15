@@ -58,7 +58,7 @@
 		"mocha": "^7.0.1",
 		"null-loader": "^3.0.0",
 		"test-runner-config": "^1.0.0",
-		"type-enforcer": "^1.1.0",
+		"type-enforcer": "^1.1.1",
 		"wallaby-webpack": "^3.9.15",
 		"webpack": "^4.41.6"
 	}
