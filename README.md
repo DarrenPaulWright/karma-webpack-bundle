@@ -79,7 +79,7 @@ npm run bench
 <br><a name="karmaConfig"></a>
 
 ## karmaConfig ⇒ <code>function</code>
-> Returns a config function that can be used with karma. Sets up karma to run in Chrome headless and Firefox headless with karma-mocha-reporter.
+> Returns a config function that can be used with karma. Sets up karma to run in Chrome headless and Firefox headless with mocha and karma-mocha-reporter.
 > 
 > If --single-run is provided:
 > - Webpack runs in production mode, otherwise it runs in dev mode.
@@ -118,7 +118,7 @@ npm test
 <br><a name="wallabyConfig"></a>
 
 ## wallabyConfig ⇒ <code>function</code>
-> Returns a config function that can be used with wallaby. Sets the test framework to mocha, runs in Chrome headless, and sets up webpack similar to the karma config.
+> Returns a config function that can be used with [wallaby](https://wallabyjs.com/). Sets the test framework to mocha, runs in Chrome headless, and sets up webpack similar to the karma config.
 > 
 > By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory
 
