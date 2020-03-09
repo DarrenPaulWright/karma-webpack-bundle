@@ -1,7 +1,29 @@
 const wallabyWebpack = require('wallaby-webpack');
 const testRunner = require('test-runner-config');
+const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
 
-module.exports = function(testRunnerConfig, settings = {}) {
+/**
+ * Returns a config function that can be used with [wallaby](https://wallabyjs.com/). Sets the test framework to mocha, runs in Chrome headless, and sets up webpack similar to the karma config.
+ *
+ * By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory
+ *
+ * @example
+ * create a file in the root of your project called wallaby.conf.js:
+ *
+ * ```javascript
+ * const {wallabyConfig} = require('karma-webpack-bundle');
+ *
+ * module.exports = wallabyConfig();
+ * ```
+ *
+ * @name wallabyConfig
+ *
+ * @param {Array} [testRunnerConfig] - A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config)
+ * @param {Object} [settings] - Overrides any of the provided settings.
+ *
+ * @returns {function}
+ */
+module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings = {}) {
 	const files = testRunner.getWallabyFiles(testRunnerConfig, {
 		css(file) {
 			return {pattern: file, instrument: false, load: true};

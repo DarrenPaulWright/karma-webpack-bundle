@@ -1,7 +1,18 @@
-var EOL = require('os').EOL;
+var {EOL} = require('os');
 var _ = require('lodash');
 var stripAnsi = require('strip-ansi');
 
+/**
+ * A plugin for the karma-benchmarkjs-reporter formatBenchmark option. Only current difference with the default formatter is the hz number is passed through toLocaleString to make the number more readable. This is used in karmaBenchConfig.
+ *
+ * @name formatBenchmark
+ *
+ * @param benchmark
+ * @param browser
+ * @param config
+ *
+ * @returns {string}
+ */
 module.exports = (benchmark, browser, config) => {
 	const style = config.style;
 

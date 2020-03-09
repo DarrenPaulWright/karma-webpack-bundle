@@ -1,3 +1,11 @@
+/**
+ * @name Installation
+ * @summary
+ *
+ * ```
+ * npm install karma-webpack-bundle --save-dev
+ * ```
+ */
 module.exports = {
 	benchSettings: require('./src/benchSettings.js'),
 	formatBenchmark: require('./src/formatBenchmark.js'),
