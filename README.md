@@ -89,9 +89,9 @@ npm run bench
 ## karmaConfig ⇒ <code>function</code>
 > Returns a config function that can be used with karma. Sets up karma to run in Chrome headless and Firefox headless with mocha and karma-mocha-reporter.
 > 
-> If --single-run is provided:
-> - Webpack runs in production mode, otherwise it runs in dev mode.
-> - karma-coverage and karma-coveralls are added to reporters
+> If --single-run is provided then webpack runs in production mode, otherwise it runs in dev mode.
+> 
+> If running on Travis CI then karma-coverage and karma-coveralls are added to reporters
 > 
 > By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory.
 
