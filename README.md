@@ -12,7 +12,9 @@
 <br><a name="Installation"></a>
 
 ## Installation
-```npm install karma-webpack-bundle --save-dev```
+```
+npm install karma-webpack-bundle --save-dev
+```
 
 <br><a name="benchSettings"></a>
 
@@ -23,14 +25,20 @@
 
 | Name | Type | Default |
 | --- | --- | --- |
-| maxTime | <code>Number</code> | <code>0.2</code> | 
-| minTime | <code>Number</code> | <code>0.2</code> | 
-| minSamples | <code>Number</code> | <code>1</code> | 
-| delay | <code>Number</code> | <code>0</code> | 
+| maxTime | <code>number</code> | <code>0.2</code> | 
+| minTime | <code>number</code> | <code>0.2</code> | 
+| minSamples | <code>number</code> | <code>1</code> | 
+| delay | <code>number</code> | <code>0</code> | 
 | async | <code>boolean</code> | <code>true</code> | 
 
 **Example**  
-```javascriptconst {benchSettings} = require('karma-webpack-bundle');benchmark('how fast is this', () => {    [1, 2, 3].map((x) => x * 2);}, benchSettings);```
+```javascript
+const {benchSettings} = require('karma-webpack-bundle');
+
+benchmark('how fast is this', () => {
+    [1, 2, 3].map((x) => x * 2);
+}, benchSettings);
+```
 
 <br><a name="formatBenchmark"></a>
 
@@ -38,22 +46,22 @@
 > A plugin for the karma-benchmarkjs-reporter formatBenchmark option. Only current difference with the default formatter is the hz number is passed through toLocaleString to make the number more readable. This is used in karmaBenchConfig.
 
 
-| Param |
-| --- |
-| benchmark | 
-| browser | 
-| config | 
+| Param | Type | Description |
+| --- | --- | --- |
+| benchmark | <code>object</code> | benchmark |
+| browser | <code>object</code> | browser |
+| config | <code>object</code> | config |
 
 
 <br><a name="karmaBenchConfig"></a>
 
 ## karmaBenchConfig ⇒ <code>function</code>
-> Returns a config function that can be used with karma-benchmark. Sets up karma-benchmark to run in Chrome headless with karma-benchmarkjs-reporter (with the local formatBenchmark formatter), and webpack in production mode. Looks for files in a bench directory that match \*\*\/\*.bench.js
+> Returns a config function that can be used with karma-benchmark. Sets up karma-benchmark to run in Chrome headless with karma-benchmarkjs-reporter (with the local formatBenchmark formatter), and webpack in production mode. Looks for files in a bench directory that match \*\*\/\*.bench.js.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [settings] | <code>Object</code> | Overrides any of the provided settings. |
+| [settings] | <code>object</code> | Overrides any of the provided settings. |
 
 **Example**  
 create a file in the root of your project called karma.bench.conf.js:
@@ -85,19 +93,19 @@ npm run bench
 > - Webpack runs in production mode, otherwise it runs in dev mode.
 > - karma-coverage and karma-coveralls are added to reporters
 > 
-> By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory
+> By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | [testRunnerConfig] | <code>Array</code> | A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config) |
-| [settings] | <code>Object</code> | Overrides any of the provided settings. |
+| [settings] | <code>object</code> | Overrides any of the provided settings. |
 
 **Example**  
 create a file in the root of your project called karma.conf.js:
 
 ```javascript
-const {karmaConfig} = require('karma-webpack-bundle');
+const { karmaConfig } = require('karma-webpack-bundle');
 
 module.exports = karmaConfig();
 ```
@@ -120,19 +128,19 @@ npm test
 ## wallabyConfig ⇒ <code>function</code>
 > Returns a config function that can be used with [wallaby](https://wallabyjs.com/). Sets the test framework to mocha, runs in Chrome headless, and sets up webpack similar to the karma config.
 > 
-> By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory
+> By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | [testRunnerConfig] | <code>Array</code> | A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config) |
-| [settings] | <code>Object</code> | Overrides any of the provided settings. |
+| [settings] | <code>object</code> | Overrides any of the provided settings. |
 
 **Example**  
 create a file in the root of your project called wallaby.conf.js:
 
 ```javascript
-const {wallabyConfig} = require('karma-webpack-bundle');
+const { wallabyConfig } = require('karma-webpack-bundle');
 
 module.exports = wallabyConfig();
 ```
