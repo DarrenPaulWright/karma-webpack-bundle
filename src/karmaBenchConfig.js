@@ -1,10 +1,10 @@
-const formatBenchmark = require('./formatBenchmark');
 const chalk = require('chalk');
+const formatBenchmark = require('./formatBenchmark');
 
 const watch = process.argv.includes('--watch');
 
 /**
- * Returns a config function that can be used with karma-benchmark. Sets up karma-benchmark to run in Chrome headless with karma-benchmarkjs-reporter (with the local formatBenchmark formatter), and webpack in production mode. Looks for files in a bench directory that match \*\*\/\*.bench.js
+ * Returns a config function that can be used with karma-benchmark. Sets up karma-benchmark to run in Chrome headless with karma-benchmarkjs-reporter (with the local formatBenchmark formatter), and webpack in production mode. Looks for files in a bench directory that match \*\*\/\*.bench.js.
  *
  * @example
  * create a file in the root of your project called karma.bench.conf.js:
@@ -29,9 +29,9 @@ const watch = process.argv.includes('--watch');
  *
  * @name karmaBenchConfig
  *
- * @param {Object} [settings] - Overrides any of the provided settings.
+ * @param {object} [settings] - Overrides any of the provided settings.
  *
- * @returns {function}
+ * @returns {Function}
  */
 module.exports = function(settings = {}) {
 	return function(config) {
@@ -48,7 +48,7 @@ module.exports = function(settings = {}) {
 			reporters: ['benchmark'],
 			benchmarkReporter: {
 				decorator: '•',
-				formatBenchmark: formatBenchmark,
+				formatBenchmark,
 				style: {
 					decorator: chalk.gray,
 					hz: chalk.greenBright,
@@ -60,13 +60,13 @@ module.exports = function(settings = {}) {
 				mode: 'production',
 				module: {
 					rules: [{
-						test: /\.less$/,
+						test: /\.less$/u,
 						loader: 'null-loader'
 					}]
 				},
-				watch: watch,
+				watch,
 				node: {
-					fs: "empty"
+					fs: 'empty'
 				}
 			},
 			webpackServer: {

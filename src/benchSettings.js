@@ -12,10 +12,10 @@
  *
  * @name benchSettings
  * @type {object}
- * @property {Number} maxTime=0.2
- * @property {Number} minTime=0.2
- * @property {Number} minSamples=1
- * @property {Number} delay=0
+ * @property {number} maxTime=0.2
+ * @property {number} minTime=0.2
+ * @property {number} minSamples=1
+ * @property {number} delay=0
  * @property {boolean} async=true
  */
 module.exports = {

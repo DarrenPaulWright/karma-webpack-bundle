@@ -2,7 +2,7 @@ const testRunner = require('test-runner-config');
 const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
 
 const singleRun = process.argv.includes('--single-run');
-const exclude = (file) => ({pattern: file, included: false});
+const exclude = (file) => ({ pattern: file, included: false });
 
 /**
  * Returns a config function that can be used with karma. Sets up karma to run in Chrome headless and Firefox headless with mocha and karma-mocha-reporter.
@@ -11,13 +11,13 @@ const exclude = (file) => ({pattern: file, included: false});
  * - Webpack runs in production mode, otherwise it runs in dev mode.
  * - karma-coverage and karma-coveralls are added to reporters
  *
- * By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory
+ * By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory.
  *
  * @example
  * create a file in the root of your project called karma.conf.js:
  *
  * ```javascript
- * const {karmaConfig} = require('karma-webpack-bundle');
+ * const { karmaConfig } = require('karma-webpack-bundle');
  *
  * module.exports = karmaConfig();
  * ```
@@ -38,9 +38,9 @@ const exclude = (file) => ({pattern: file, included: false});
  * @name karmaConfig
  *
  * @param {Array} [testRunnerConfig] - A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config)
- * @param {Object} [settings] - Overrides any of the provided settings.
+ * @param {object} [settings] - Overrides any of the provided settings.
  *
- * @returns {function}
+ * @returns {Function}
  */
 module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings = {}) {
 	return function(config) {
@@ -53,9 +53,9 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 					flags: ['-headless']
 				}
 			},
-			files: testRunner.getKarmaFiles(testRunnerConfig, {src: exclude}).files,
+			files: testRunner.getKarmaFiles(testRunnerConfig, { src: exclude }).files,
 			preprocessors: testRunner
-				.getKarmaFiles(testRunnerConfig, {css: exclude, src: exclude})
+				.getKarmaFiles(testRunnerConfig, { css: exclude, src: exclude })
 				.files
 				.reduce((result, pattern) => {
 					if (pattern.included !== false) {
@@ -78,7 +78,7 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 					splitChunks: {
 						cacheGroups: {
 							vendor: {
-								test: /node_modules/,
+								test: /node_modules/u,
 								name: 'vendor',
 								maxSize: 244000,
 								chunks: 'all'
@@ -88,23 +88,22 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 				},
 				module: {
 					rules: [{
-						test: /\.less$/,
+						test: /\.less$/u,
 						loader: 'null-loader'
 					}, {
-						test: /\.js$/,
+						test: /\.js$/u,
 						enforce: 'pre',
-						exclude: /node_modules/,
+						exclude: /node_modules/u,
 						use: [{
 							loader: 'eslint-loader',
 							options: {
-								configFile: '.eslintrc.json',
-								cache: true,
+								cache: false,
 								emitWarning: true,
 								emitError: true
 							}
 						}]
 					}, {
-						test: /\.js/,
+						test: /\.js/u,
 						loader: 'babel-loader'
 					}]
 				},

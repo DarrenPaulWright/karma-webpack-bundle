@@ -5,13 +5,13 @@ const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
 /**
  * Returns a config function that can be used with [wallaby](https://wallabyjs.com/). Sets the test framework to mocha, runs in Chrome headless, and sets up webpack similar to the karma config.
  *
- * By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory
+ * By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory.
  *
  * @example
  * create a file in the root of your project called wallaby.conf.js:
  *
  * ```javascript
- * const {wallabyConfig} = require('karma-webpack-bundle');
+ * const { wallabyConfig } = require('karma-webpack-bundle');
  *
  * module.exports = wallabyConfig();
  * ```
@@ -19,30 +19,30 @@ const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
  * @name wallabyConfig
  *
  * @param {Array} [testRunnerConfig] - A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config)
- * @param {Object} [settings] - Overrides any of the provided settings.
+ * @param {object} [settings] - Overrides any of the provided settings.
  *
- * @returns {function}
+ * @returns {Function}
  */
 module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings = {}) {
 	const files = testRunner.getWallabyFiles(testRunnerConfig, {
 		css(file) {
-			return {pattern: file, instrument: false, load: true};
+			return { pattern: file, instrument: false, load: true };
 		},
 		helper(file) {
-			return {pattern: file, instrument: false, load: false};
+			return { pattern: file, instrument: false, load: false };
 		},
 		src(file) {
-			return {pattern: file, instrument: true, load: false};
+			return { pattern: file, instrument: true, load: false };
 		},
 		specs(file) {
-			return {pattern: file, instrument: false, load: false};
+			return { pattern: file, instrument: false, load: false };
 		}
 	});
 
 	return function(wallaby) {
 		return {
 			testFramework: 'mocha',
-			env: {kind: 'chrome'},
+			env: { kind: 'chrome' },
 			files: files.files,
 			tests: files.tests,
 			postprocessor: wallabyWebpack({
@@ -50,7 +50,7 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 					splitChunks: {
 						cacheGroups: {
 							vendor: {
-								test: /node_modules/,
+								test: /node_modules/u,
 								name: 'vendor',
 								maxSize: 244000,
 								chunks: 'all'
@@ -60,16 +60,16 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 				},
 				module: {
 					rules: [{
-						test: /\.less$/,
+						test: /\.less$/u,
 						loader: 'null-loader'
 					}, {
-						test: /\.js/,
+						test: /\.js/u,
 						loader: 'babel-loader'
 					}]
 				},
 				devtool: 'source-map'
 			}),
-			compilers: {'**/*.js': wallaby.compilers.babel()},
+			compilers: { '**/*.js': wallaby.compilers.babel() },
 			setup() {
 				window.__moduleBundler.loadTests();
 			},
