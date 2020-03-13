@@ -7,7 +7,8 @@ module.exports = {
 	'plugins': [
 		'babel',
 		'jsdoc',
-		'import'
+		'import',
+		'unicorn'
 	],
 	'env': {
 		'browser': true,
@@ -177,6 +178,66 @@ module.exports = {
 			'groups': ['builtin', 'external', 'index', 'internal', 'parent', 'sibling', 'unknown']
 		}],
 		'import/newline-after-import': ERROR,
-		'import/no-named-default': ERROR
+		'import/no-named-default': ERROR,
+
+		'unicorn/better-regex': ERROR,
+		'unicorn/catch-error-name': ERROR,
+		'unicorn/consistent-function-scoping': OFF,
+		'unicorn/custom-error-definition': OFF,
+		'unicorn/error-message': ERROR,
+		'unicorn/escape-case': ERROR,
+		'unicorn/expiring-todo-comments': OFF,
+		'unicorn/explicit-length-check': ERROR,
+		'unicorn/filename-case': [ERROR, {
+			'cases': {
+				'camelCase': true,
+				'pascalCase': true
+			}
+		}],
+		'unicorn/import-index': OFF,
+		'unicorn/new-for-builtins': OFF,
+		'unicorn/no-abusive-eslint-disable': ERROR,
+		'unicorn/no-array-instanceof': ERROR,
+		'unicorn/no-console-spaces': OFF,
+		'unicorn/no-fn-reference-in-iterator': OFF,
+		'unicorn/no-for-loop': OFF,
+		'unicorn/no-hex-escape': ERROR,
+		'unicorn/no-keyword-prefix': OFF,
+		'no-nested-ternary': OFF,
+		'unicorn/no-nested-ternary': ERROR,
+		'unicorn/no-new-buffer': ERROR,
+		'unicorn/no-process-exit': ERROR,
+		'unicorn/no-unreadable-array-destructuring': OFF,
+		'unicorn/no-unsafe-regex': ERROR,
+		'unicorn/no-unused-properties': OFF,
+		'unicorn/no-zero-fractions': ERROR,
+		'unicorn/number-literal-case': ERROR,
+		'unicorn/prefer-add-event-listener': OFF,
+		'unicorn/prefer-dataset': OFF,
+		'unicorn/prefer-event-key': OFF,
+		'unicorn/prefer-flat-map': OFF,
+		'unicorn/prefer-includes': ERROR,
+		'unicorn/prefer-modern-dom-apis': ERROR,
+		'unicorn/prefer-negative-index': ERROR,
+		'unicorn/prefer-node-append': ERROR,
+		'unicorn/prefer-node-remove': ERROR,
+		'unicorn/prefer-query-selector': ERROR,
+		'unicorn/prefer-reflect-apply': ERROR,
+		'unicorn/prefer-replace-all': OFF,
+		'unicorn/prefer-spread': OFF,
+		'unicorn/prefer-starts-ends-with': ERROR,
+		'unicorn/prefer-string-slice': ERROR,
+		'unicorn/prefer-text-content': ERROR,
+		'unicorn/prefer-trim-start-end': ERROR,
+		'unicorn/prefer-type-error': ERROR,
+		'unicorn/prevent-abbreviations': [ERROR, {
+			'replacements': {
+				'arg': false,
+				'args': false,
+				'conf': false
+			}
+		}],
+		'unicorn/string-content': OFF,
+		'unicorn/throw-new-error': ERROR
 	}
 };
