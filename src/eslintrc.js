@@ -8,7 +8,8 @@ module.exports = {
 		'babel',
 		'jsdoc',
 		'import',
-		'unicorn'
+		'unicorn',
+		'mocha'
 	],
 	'env': {
 		'browser': true,
@@ -238,6 +239,28 @@ module.exports = {
 			}
 		}],
 		'unicorn/string-content': OFF,
-		'unicorn/throw-new-error': ERROR
+		'unicorn/throw-new-error': ERROR,
+
+		'mocha/handle-done-callback': ERROR,
+		'mocha/max-top-level-suites': [ERROR, { 'limit': 1 }],
+		'mocha/no-async-describe': ERROR,
+		'mocha/no-exclusive-tests': ERROR,
+		'mocha/no-global-tests': ERROR,
+		'mocha/no-hooks': OFF,
+		'mocha/no-hooks-for-single-case': ERROR,
+		'mocha/no-identical-title': ERROR,
+		'mocha/no-mocha-arrows': OFF,
+		'mocha/no-nested-tests': OFF,
+		'mocha/no-pending-tests': WARN,
+		'mocha/no-return-and-callback': OFF,
+		'mocha/no-return-from-async': ERROR,
+		'mocha/no-setup-in-describe': OFF,
+		'mocha/no-sibling-hooks': ERROR,
+		'mocha/no-skipped-tests': ERROR,
+		'mocha/no-synchronous-tests': OFF,
+		'mocha/no-top-level-hooks': OFF,
+		'mocha/prefer-arrow-callback': OFF,
+		'mocha/valid-suite-description': OFF,
+		'mocha/valid-test-description': ERROR
 	}
 };
