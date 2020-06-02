@@ -68,7 +68,7 @@ module.exports = {
 		'linebreak-style': ERROR,
 		'lines-between-class-members': ERROR,
 		'max-depth': ERROR,
-		'new-cap': ERROR,
+		'new-cap': [ERROR, { 'capIsNewExceptionPattern': '$.*' }],
 		'new-parens': ERROR,
 		'no-lonely-if': ERROR,
 		'no-mixed-operators': ERROR,
@@ -104,7 +104,7 @@ module.exports = {
 		'one-var': [ERROR, 'never'],
 		'padded-blocks': [ERROR, 'never'],
 		'quotes': [ERROR, 'single'],
-		'indent': ['error', 'tab'],
+		'indent': [ERROR, 'tab', { SwitchCase: 1 }],
 		'function-paren-newline': [ERROR, 'multiline'],
 		'object-curly-newline': [ERROR, {
 			'multiline': true,
@@ -112,7 +112,7 @@ module.exports = {
 		}],
 		'comma-style': [ERROR, 'last'],
 		'brace-style': [ERROR, 'stroustrup'],
-		'comma-dangle': ['error', 'never'],
+		'comma-dangle': [ERROR, 'never'],
 		'grouped-accessor-pairs': [ERROR, 'getBeforeSet'],
 		'yoda': [ERROR, 'never', { 'onlyEquality': true }],
 		'max-params': [ERROR, { 'max': 5 }],
@@ -175,7 +175,7 @@ module.exports = {
 		'import/first': ERROR,
 		'import/no-duplicates': ERROR,
 		'import/no-namespace': ERROR,
-		'import/order': ['error', {
+		'import/order': [ERROR, {
 			'groups': ['builtin', 'external', 'index', 'internal', 'parent', 'sibling', 'unknown']
 		}],
 		'import/newline-after-import': ERROR,
