@@ -6,9 +6,9 @@ const stripAnsi = require('strip-ansi');
  *
  * @name formatBenchmark
  *
- * @param {object} benchmark - benchmark
- * @param {object} browser -browser
- * @param {object} config - config
+ * @param {object} benchmark - The benchmark object.
+ * @param {object} browser - Browser data.
+ * @param {object} config - The config object.
  *
  * @returns {string}
  */

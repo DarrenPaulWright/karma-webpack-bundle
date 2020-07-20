@@ -38,7 +38,7 @@ const exclude = (file) => ({ pattern: file, included: false });
  *
  * @name karmaConfig
  *
- * @param {Array} [testRunnerConfig] - A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config)
+ * @param {Array} [testRunnerConfig] - A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config).
  * @param {object} [settings] - Overrides any of the provided settings.
  *
  * @returns {Function}

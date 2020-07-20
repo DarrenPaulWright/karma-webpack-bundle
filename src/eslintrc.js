@@ -28,6 +28,26 @@ module.exports = {
 		'suite': 'readonly',
 		'benchmark': 'readonly'
 	},
+	'reportUnusedDisableDirectives': true,
+	'settings': {
+		'jsdoc': {
+			'tagNamePreference': {
+				'arg': 'param',
+				'return': 'returns',
+				'augments': 'extends',
+				'chainable': 'chainable',
+				'category': 'category',
+				'method': 'method',
+				'memberOf': 'memberof'
+			},
+			'preferredTypes': {
+				'Int': 'number.int',
+				'int': 'number.int',
+				'Float': 'number.float',
+				'float': 'number.float'
+			}
+		}
+	},
 	'rules': {
 		'curly': ERROR,
 		'default-param-last': ERROR,
@@ -104,8 +124,14 @@ module.exports = {
 		'one-var': [ERROR, 'never'],
 		'padded-blocks': [ERROR, 'never'],
 		'quotes': [ERROR, 'single'],
-		'indent': [ERROR, 'tab', { SwitchCase: 1 }],
-		'function-paren-newline': [ERROR, 'multiline'],
+		'indent': [ERROR, 'tab', {
+			SwitchCase: 1,
+			MemberExpression: 'off',
+			ignoredNodes: [
+				'CallExpression > MemberExpression *'
+			]
+		}],
+		'function-paren-newline': OFF,
 		'object-curly-newline': [ERROR, {
 			'multiline': true,
 			'consistent': true
@@ -133,13 +159,20 @@ module.exports = {
 
 		'jsdoc/check-alignment': ERROR,
 		'jsdoc/check-examples': OFF,
-		'jsdoc/check-indentation': ERROR,
+		'jsdoc/check-indentation': [ERROR, { excludeTags: ['example', 'description', 'summary'] }],
 		'jsdoc/check-param-names': ERROR,
 		'jsdoc/check-syntax': ERROR,
-		'jsdoc/check-tag-names': OFF,
+		'jsdoc/check-tag-names': ERROR,
 		'jsdoc/check-types': ERROR,
 		'jsdoc/implements-on-classes': ERROR,
-		'jsdoc/match-description': ERROR,
+		'jsdoc/match-description': [ERROR, {
+			matchDescription: '^[A-Z].*\\.',
+			tags: {
+				param: '^[A-Z].*\\.$',
+				property: '^([A-Z].*\\.)?$',
+				returns: '^([A-Z].*\\.)?$'
+			}
+		}],
 		'jsdoc/newline-after-description': ERROR,
 		'jsdoc/no-types': OFF,
 		'jsdoc/no-undefined-types': ERROR,
@@ -235,7 +268,9 @@ module.exports = {
 			'replacements': {
 				'arg': false,
 				'args': false,
-				'conf': false
+				'conf': false,
+				'dev': false,
+				'prod': false
 			}
 		}],
 		'unicorn/string-content': OFF,
