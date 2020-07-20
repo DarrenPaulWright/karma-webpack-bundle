@@ -25,11 +25,11 @@ npm install karma-webpack-bundle --save-dev
 
 | Name | Type | Default |
 | --- | --- | --- |
-| maxTime | <code>number</code> | <code>0.2</code> | 
-| minTime | <code>number</code> | <code>0.2</code> | 
-| minSamples | <code>number</code> | <code>1</code> | 
-| delay | <code>number</code> | <code>0</code> | 
-| async | <code>boolean</code> | <code>true</code> | 
+| [maxTime] | <code>number</code> | <code>0.2</code> | 
+| [minTime] | <code>number</code> | <code>0.2</code> | 
+| [minSamples] | <code>number</code> | <code>1</code> | 
+| [delay] | <code>number</code> | <code>0</code> | 
+| [async] | <code>boolean</code> | <code>true</code> | 
 
 **Example**  
 ```javascript
@@ -48,9 +48,9 @@ benchmark('how fast is this', () => {
 
 | Param | Type | Description |
 | --- | --- | --- |
-| benchmark | <code>object</code> | benchmark |
-| browser | <code>object</code> | browser |
-| config | <code>object</code> | config |
+| benchmark | <code>object</code> | The benchmark object. |
+| browser | <code>object</code> | Browser data. |
+| config | <code>object</code> | The config object. |
 
 
 <br><a name="karmaBenchConfig"></a>
@@ -98,7 +98,7 @@ npm run bench
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [testRunnerConfig] | <code>Array</code> | A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config) |
+| [testRunnerConfig] | <code>Array</code> | A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config). |
 | [settings] | <code>object</code> | Overrides any of the provided settings. |
 
 **Example**  
@@ -133,7 +133,7 @@ npm test
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [testRunnerConfig] | <code>Array</code> | A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config) |
+| [testRunnerConfig] | <code>Array</code> | A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config). |
 | [settings] | <code>object</code> | Overrides any of the provided settings. |
 
 **Example**  
