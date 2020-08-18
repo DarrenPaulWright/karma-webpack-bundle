@@ -1,70 +1,70 @@
 {
 	"name": "karma-webpack-bundle",
 	"version": "0.5.1",
-	"author": {
-		"name": "Darren Paul Wright",
-		"email": "Darren@DarrenPaulWright.com",
-		"url": "https://www.darrenpaulwright.com"
-	},
 	"description": "A personalized bundle of karma libraries and configs",
-	"main": "index.js",
-	"files": [
-		"/src"
-	],
-	"scripts": {
-		"test": "eslint **/*.js && karma start --single-run && npm run bench",
-		"test-watch": "karma start",
-		"bench": "karma start karma.bench.conf.js",
-		"preversion": "npm test && npm run docs && git add --all && git diff --staged --quiet || git commit -m \"Updating docs\"",
-		"postversion": "npm publish",
-		"postpublish": "git push --follow-tags",
-		"pre-clean": "rm -rf node_modules && del /f package-lock.json",
-		"clean": "npm run pre-clean && npm install",
-		"update": "ncu -u && npm install",
-		"update-clean": "npm run pre-clean && npm run update",
-		"update-commit": "npm run update && npm test && git add --all && git diff --staged --quiet || git commit -m \"Updating dependencies\"",
-		"update-patch": "npm run update-commit && npm version patch",
-		"docs2": "jsdoc2md ./index.js src/*.js > README.md -t node_modules/dmd-readable/overview.hbs --plugin dmd-readable/overview-plugin.js",
-		"docs": "jsdoc2md ./index.js src/*.js > README.md -t  -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable"
-	},
-	"badges": {
-		"npm": {
-			"image": "https://img.shields.io/npm/v/{{name}}.svg",
-			"url": "https://npmjs.com/package/{{name}}"
-		},
-		"deps": {
-			"image": "https://david-dm.org/darrenpaulwright/{{name}}.svg",
-			"url": "https://david-dm.org/darrenpaulwright/{{name}}"
-		},
-		"size": {
-			"base": "https://packagephobia.now.sh/",
-			"image": "badge?p={{name}}",
-			"url": "result?p={{name}}"
-		},
-		"vulnerabilities": {
-			"base": "https://snyk.io/test/github/DarrenPaulWright/{{name}}",
-			"image": "/badge.svg?targetFile=package.json",
-			"url": "?targetFile=package.json"
-		},
-		"license": {
-			"image": "https://img.shields.io/github/license/DarrenPaulWright/{{name}}.svg",
-			"url": "https://npmjs.com/package/{{name}}/LICENSE.md"
-		}
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/DarrenPaulWright/karma-webpack-bundle.git"
-	},
 	"keywords": [
 		"karma",
 		"webpack",
 		"benchmark"
 	],
 	"license": "MIT",
+	"author": {
+		"name": "Darren Paul Wright",
+		"email": "Darren@DarrenPaulWright.com",
+		"url": "https://www.darrenpaulwright.com"
+	},
+	"homepage": "https://github.com/DarrenPaulWright/karma-webpack-bundle#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DarrenPaulWright/karma-webpack-bundle.git"
+	},
 	"bugs": {
 		"url": "https://github.com/DarrenPaulWright/karma-webpack-bundle/issues"
 	},
-	"homepage": "https://github.com/DarrenPaulWright/karma-webpack-bundle#readme",
+	"main": "index.js",
+	"files": [
+		"/src"
+	],
+	"badges": {
+		"npm": {
+			"image": "https://img.shields.io/npm/v/karma-webpack-bundle.svg",
+			"url": "https://npmjs.com/package/karma-webpack-bundle"
+		},
+		"deps": {
+			"image": "https://david-dm.org/DarrenPaulWright/karma-webpack-bundle.svg",
+			"url": "https://david-dm.org/DarrenPaulWright/karma-webpack-bundle"
+		},
+		"size": {
+			"base": "https://packagephobia.now.sh/",
+			"image": "badge?p=karma-webpack-bundle",
+			"url": "result?p=karma-webpack-bundle"
+		},
+		"vulnerabilities": {
+			"base": "https://snyk.io/test/github/DarrenPaulWright/karma-webpack-bundle",
+			"image": "/badge.svg?targetFile=package.json",
+			"url": "?targetFile=package.json"
+		},
+		"license": {
+			"image": "https://img.shields.io/github/license/DarrenPaulWright/karma-webpack-bundle.svg",
+			"url": "https://npmjs.com/package/karma-webpack-bundle/LICENSE.md"
+		}
+	},
+	"scripts": {
+		"test": "eslint **/*.js && karma start --single-run && npm run bench",
+		"test-watch": "karma start",
+		"bench": "karma start karma.bench.conf.js",
+		"preversion": "npm test && npm run docs && git add --all && git diff HEAD --quiet || git commit -m \"Updating docs\"",
+		"postversion": "npm publish",
+		"postpublish": "git push --follow-tags",
+		"pre-clean": "rm -rf node_modules && del /f package-lock.json",
+		"clean": "npm run pre-clean && npm install && npm audit fix",
+		"update": "ncu -u && git diff --quiet || npm install && npm audit fix",
+		"update-clean": "npm run pre-clean && npm run update",
+		"update-commit": "npm run update && npm test && git add --all && git diff HEAD --quiet || git commit -m \"Updating dependencies\"",
+		"update-patch": "npm run update && npm test && git add --all && git diff HEAD --quiet || git commit -m \"Updating dependencies\" && npm version patch",
+		"docs2": "jsdoc2md ./index.js src/*.js > README.md -t node_modules/dmd-readable/overview.hbs --plugin dmd-readable/overview-plugin.js",
+		"docs": "jsdoc2md ./index.js src/*.js > README.md -t  -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable"
+	},
 	"dependencies": {
 		"@babel/core": "^7.11.1",
 		"@babel/preset-env": "^7.11.0",
