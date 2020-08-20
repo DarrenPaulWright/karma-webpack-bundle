@@ -147,8 +147,8 @@ module.exports = wallabyConfig();
 
 [npm]: https://img.shields.io/npm/v/karma-webpack-bundle.svg
 [npm-url]: https://npmjs.com/package/karma-webpack-bundle
-[deps]: https://david-dm.org/darrenpaulwright/karma-webpack-bundle.svg
-[deps-url]: https://david-dm.org/darrenpaulwright/karma-webpack-bundle
+[deps]: https://david-dm.org/DarrenPaulWright/karma-webpack-bundle.svg
+[deps-url]: https://david-dm.org/DarrenPaulWright/karma-webpack-bundle
 [size]: https://packagephobia.now.sh/badge?p&#x3D;karma-webpack-bundle
 [size-url]: https://packagephobia.now.sh/result?p&#x3D;karma-webpack-bundle
 [vulnerabilities]: https://snyk.io/test/github/DarrenPaulWright/karma-webpack-bundle/badge.svg?targetFile&#x3D;package.json
