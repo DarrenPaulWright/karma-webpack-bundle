@@ -1,6 +1,6 @@
 {
 	"name": "karma-webpack-bundle",
-	"version": "0.5.2",
+	"version": "0.5.3",
 	"description": "A personalized bundle of karma libraries and configs",
 	"keywords": [
 		"karma",
