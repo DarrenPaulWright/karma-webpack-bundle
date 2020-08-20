@@ -38,7 +38,7 @@ module.exports = {
 				'chainable': 'chainable',
 				'category': 'category',
 				'method': 'method',
-				'memberOf': 'memberof'
+				'memberof': 'memberOf'
 			},
 			'preferredTypes': {
 				'Int': 'number.int',
@@ -168,9 +168,9 @@ module.exports = {
 		'jsdoc/match-description': [ERROR, {
 			matchDescription: '^[A-Z].*\\.',
 			tags: {
-				param: '^[A-Z].*\\.$',
-				property: '^([A-Z].*\\.)?$',
-				returns: '^([A-Z].*\\.)?$'
+				param: '^[A-Z_].*\\.$',
+				property: '^([A-Z_].*\\.)?$',
+				returns: '^([A-Z_].*\\.)?$'
 			}
 		}],
 		'jsdoc/newline-after-description': ERROR,
