@@ -1,4 +1,3 @@
-const { EOL } = require('os');
 const stripAnsi = require('strip-ansi');
 
 /**
@@ -17,10 +16,11 @@ module.exports = (benchmark, browser, config) => {
 
 	const output = [
 		style.decorator(config.decorator),
-		style.hz(Math.round(benchmark.hz).toLocaleString().padStart(config.hzWidth)),
+		style.hz(Math.round(benchmark.hz)
+			.toLocaleString()
+			.padStart(config.hzWidth)),
 		style.hzUnits(config.hzUnits),
-		config.showBrowser ? style.browser(('[' + browser.name + ']').padStart(config.terminalWidth)) : '',
-		EOL
+		config.showBrowser ? style.browser(('[' + browser.name + ']').padStart(config.terminalWidth)) : '\n'
 	];
 
 	output.splice(1, 0, style.benchmark(benchmark.name.padEnd(config.terminalWidth - stripAnsi(output.join(' ')).length)));

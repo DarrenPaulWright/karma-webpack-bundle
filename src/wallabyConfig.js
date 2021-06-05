@@ -1,4 +1,3 @@
-const wallabyWebpack = require('wallaby-webpack');
 const testRunner = require('test-runner-config');
 const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
 
@@ -45,7 +44,7 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 			env: { kind: 'chrome' },
 			files: files.files,
 			tests: files.tests,
-			postprocessor: wallabyWebpack({
+			postprocessor: wallaby.postprocessors.webpack({
 				optimization: {
 					splitChunks: {
 						cacheGroups: {
@@ -69,7 +68,6 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 				},
 				devtool: 'source-map'
 			}),
-			compilers: { '**/*.js': wallaby.compilers.babel() },
 			setup() {
 				window.__moduleBundler.loadTests();
 			},

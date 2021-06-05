@@ -46,7 +46,7 @@ const exclude = (file) => ({ pattern: file, included: false });
 module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings = {}) {
 	return function(config) {
 		config.set({
-			frameworks: ['mocha'],
+			frameworks: ['mocha', 'webpack'],
 			browsers: ['ChromeHeadless', 'FirefoxHeadless'],
 			customLaunchers: {
 				FirefoxHeadless: {
@@ -64,7 +64,8 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 					}
 					return result;
 				}, {}),
-			reporters: ['mocha'].concat(isTravis ? ['coverage', 'coveralls'] : []),
+			reporters: ['mocha'].concat(isTravis ? ['coverage',
+				'coveralls'] : []),
 			mochaReporter: {
 				output: 'minimal',
 				showDiff: true

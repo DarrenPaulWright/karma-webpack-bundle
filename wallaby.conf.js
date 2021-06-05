@@ -1,3 +1,3 @@
-const { wallabyConfig } = require('./index.js');
+const wallabyConfig = require('./src/wallabyConfig.js');
 
 module.exports = wallabyConfig();

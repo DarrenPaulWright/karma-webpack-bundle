@@ -1,5 +1,8 @@
+const process = require('process');
 const chalk = require('chalk');
-const formatBenchmark = require('./formatBenchmark');
+const formatBenchmark = require('./formatBenchmark.js');
+
+global.process = process;
 
 const watch = process.argv.includes('--watch');
 
@@ -36,7 +39,7 @@ const watch = process.argv.includes('--watch');
 module.exports = function(settings = {}) {
 	return function(config) {
 		config.set({
-			frameworks: ['benchmark'],
+			frameworks: ['benchmark', 'webpack'],
 			singleRun: !watch,
 			autoWatch: watch,
 			concurrency: 1,
@@ -45,6 +48,12 @@ module.exports = function(settings = {}) {
 			preprocessors: {
 				'bench/**/*.bench.js': ['webpack']
 			},
+			plugins: [
+				'karma-webpack',
+				'karma-benchmark',
+				'karma-benchmarkjs-reporter',
+				'karma-chrome-launcher'
+			],
 			reporters: ['benchmark'],
 			benchmarkReporter: {
 				decorator: '•',
@@ -65,8 +74,15 @@ module.exports = function(settings = {}) {
 					}]
 				},
 				watch,
-				node: {
-					fs: 'empty'
+				resolve: {
+					fallback: {
+						fs: false,
+						path: false,
+						util: false,
+						assert: false,
+						stream: false,
+						constants: false
+					}
 				}
 			},
 			webpackServer: {

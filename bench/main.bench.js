@@ -1,4 +1,4 @@
-import { benchSettings } from '../index.js';
+import benchSettings from '../src/benchSettings.js';
 
 suite('Providing a way to test that karma-benchmark works', () => {
 	benchmark('main', () => {
