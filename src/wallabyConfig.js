@@ -23,20 +23,7 @@ const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
  * @returns {Function}
  */
 module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings = {}) {
-	const files = testRunner.getWallabyFiles(testRunnerConfig, {
-		css(file) {
-			return { pattern: file, instrument: false, load: true };
-		},
-		helper(file) {
-			return { pattern: file, instrument: false, load: false };
-		},
-		src(file) {
-			return { pattern: file, instrument: true, load: false };
-		},
-		specs(file) {
-			return { pattern: file, instrument: false, load: false };
-		}
-	});
+	const files = testRunner.getWallabyFiles(testRunnerConfig);
 
 	return function(wallaby) {
 		return {
