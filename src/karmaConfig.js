@@ -44,6 +44,17 @@ const exclude = (file) => ({ pattern: file, included: false });
  * @returns {Function}
  */
 module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings = {}) {
+	const files = testRunner.getKarmaFiles(testRunnerConfig, { src: exclude }).files;
+	const preprocessors = testRunner
+		.getKarmaFiles(testRunnerConfig, { css: exclude, src: exclude })
+		.files
+		.reduce((result, pattern) => {
+			if (pattern.included !== false) {
+				result[pattern] = ['webpack'];
+			}
+			return result;
+		}, {});
+
 	return function(config) {
 		config.set({
 			frameworks: ['mocha', 'webpack'],
@@ -54,18 +65,10 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 					flags: ['-headless']
 				}
 			},
-			files: testRunner.getKarmaFiles(testRunnerConfig, { src: exclude }).files,
-			preprocessors: testRunner
-				.getKarmaFiles(testRunnerConfig, { css: exclude, src: exclude })
-				.files
-				.reduce((result, pattern) => {
-					if (pattern.included !== false) {
-						result[pattern] = ['webpack'];
-					}
-					return result;
-				}, {}),
-			reporters: ['mocha'].concat(isTravis ? ['coverage',
-				'coveralls'] : []),
+			files,
+			preprocessors,
+			reporters: ['mocha']
+				.concat(isTravis ? ['coverage', 'coveralls'] : []),
 			mochaReporter: {
 				output: 'minimal',
 				showDiff: true
