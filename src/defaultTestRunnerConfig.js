@@ -1,4 +1,9 @@
 module.exports = [{
+	type: 'helper',
+	files: [
+		'tests/helper/**/*.js'
+	]
+}, {
 	type: 'src',
 	files: [
 		'index.js',
