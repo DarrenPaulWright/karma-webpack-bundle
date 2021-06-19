@@ -159,7 +159,9 @@ module.exports = {
 
 		'jsdoc/check-alignment': ERROR,
 		'jsdoc/check-examples': OFF,
-		'jsdoc/check-indentation': [ERROR, { excludeTags: ['example', 'description', 'summary'] }],
+		'jsdoc/check-indentation': [ERROR, {
+			excludeTags: ['example', 'description', 'summary']
+		}],
 		'jsdoc/check-param-names': ERROR,
 		'jsdoc/check-syntax': ERROR,
 		'jsdoc/check-tag-names': ERROR,
@@ -191,7 +193,8 @@ module.exports = {
 		'jsdoc/require-returns-type': ERROR,
 		'jsdoc/valid-types': ERROR,
 
-		'import/extensions': [ERROR, 'ignorePackages'], 'import/no-unresolved': ERROR,
+		'import/extensions': [ERROR, 'ignorePackages'],
+		'import/no-unresolved': ERROR,
 		'import/named': ERROR,
 		'import/namespace': ERROR,
 		'import/default': ERROR,
@@ -209,7 +212,15 @@ module.exports = {
 		'import/no-duplicates': ERROR,
 		'import/no-namespace': ERROR,
 		'import/order': [ERROR, {
-			'groups': ['builtin', 'external', 'index', 'internal', 'parent', 'sibling', 'unknown']
+			'groups': [
+				'builtin',
+				'external',
+				'index',
+				'internal',
+				'parent',
+				'sibling',
+				'unknown'
+			]
 		}],
 		'import/newline-after-import': ERROR,
 		'import/no-named-default': ERROR,
@@ -221,7 +232,9 @@ module.exports = {
 		'unicorn/error-message': ERROR,
 		'unicorn/escape-case': ERROR,
 		'unicorn/expiring-todo-comments': OFF,
-		'unicorn/explicit-length-check': ERROR,
+		'unicorn/explicit-length-check': [ERROR, {
+			'non-zero': 'not-equal'
+		}],
 		'unicorn/filename-case': [ERROR, {
 			'cases': {
 				'camelCase': true,
