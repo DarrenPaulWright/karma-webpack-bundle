@@ -1,35 +1,48 @@
-const OFF = 0;
-const WARN = 1;
-const ERROR = 2;
+const { OFF, WARN, ERROR } = require('./eslintErrorTypes.js');
 
+/**
+ * An eslint config object intended to live in the root of your project.
+ *
+ * @example
+ * Create a file in the root of your project called .eslintrc.cjs:
+ *
+ * ```javascript
+ * const { eslintrc } = require('karma-webpack-bundle');
+ *
+ * module.exports = eslintrc;
+ * ```
+ *
+ * @name eslintrc
+ * @type {object}
+ */
 module.exports = {
-	'parser': 'babel-eslint',
-	'plugins': [
+	parser: 'babel-eslint',
+	plugins: [
 		'babel',
 		'jsdoc',
 		'import',
 		'unicorn',
 		'mocha'
 	],
-	'env': {
+	env: {
 		'browser': true,
 		'node': true,
 		'es6': true,
 		'mocha': true
 	},
-	'parserOptions': {
+	parserOptions: {
 		'ecmaVersion': 6,
 		'sourceType': 'module'
 	},
-	'extends': [
+	extends: [
 		'eslint:recommended'
 	],
-	'globals': {
+	globals: {
 		'suite': 'readonly',
 		'benchmark': 'readonly'
 	},
-	'reportUnusedDisableDirectives': true,
-	'settings': {
+	reportUnusedDisableDirectives: true,
+	settings: {
 		'jsdoc': {
 			'tagNamePreference': {
 				'arg': 'param',
@@ -48,7 +61,7 @@ module.exports = {
 			}
 		}
 	},
-	'rules': {
+	rules: {
 		'curly': ERROR,
 		'default-param-last': ERROR,
 		'dot-notation': ERROR,

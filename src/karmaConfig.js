@@ -15,7 +15,7 @@ const exclude = (file) => ({ pattern: file, included: false });
  * By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory.
  *
  * @example
- * create a file in the root of your project called karma.conf.js:
+ * Create a file in the root of your project called karma.conf.js:
  *
  * ```javascript
  * const { karmaConfig } = require('karma-webpack-bundle');
@@ -36,7 +36,7 @@ const exclude = (file) => ({ pattern: file, included: false });
  * npm test
  * ```
  *
- * @name karmaConfig
+ * @function karmaConfig
  *
  * @param {Array} [testRunnerConfig] - A valid config for [test-runner-config](https://www.npmjs.com/package/test-runner-config).
  * @param {object} [settings] - Overrides any of the provided settings.

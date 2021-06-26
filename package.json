@@ -62,7 +62,6 @@
 		"update-clean": "npm run pre-clean && npm run update",
 		"update-commit": "npm run update && npm test && git add --all && git diff HEAD --quiet || git commit -m \"Updating dependencies\"",
 		"update-patch": "npm run update && npm test && git add --all && git diff HEAD --quiet || git commit -m \"Updating dependencies\" && npm version patch",
-		"docs2": "jsdoc2md ./index.js src/*.js > README.md -t node_modules/dmd-readable/overview.hbs --plugin dmd-readable/overview-plugin.js",
 		"docs": "jsdoc2md ./index.js src/*.js > README.md -t  -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable"
 	},
 	"dependencies": {

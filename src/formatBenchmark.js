@@ -3,7 +3,7 @@ const stripAnsi = require('strip-ansi');
 /**
  * A plugin for the karma-benchmarkjs-reporter formatBenchmark option. Only current difference with the default formatter is the hz number is passed through toLocaleString to make the number more readable. This is used in karmaBenchConfig.
  *
- * @name formatBenchmark
+ * @function formatBenchmark
  *
  * @param {object} benchmark - The benchmark object.
  * @param {object} browser - Browser data.

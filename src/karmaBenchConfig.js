@@ -30,7 +30,7 @@ const watch = process.argv.includes('--watch');
  * npm run bench
  * ```
  *
- * @name karmaBenchConfig
+ * @function karmaBenchConfig
  *
  * @param {object} [settings] - Overrides any of the provided settings.
  *
