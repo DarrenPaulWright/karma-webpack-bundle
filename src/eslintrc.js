@@ -56,6 +56,8 @@ module.exports = {
 			'preferredTypes': {
 				'Int': 'number.int',
 				'int': 'number.int',
+				'integer': 'number.int',
+				'Integer': 'number.int',
 				'Float': 'number.float',
 				'float': 'number.float'
 			}
@@ -99,7 +101,9 @@ module.exports = {
 		'computed-property-spacing': ERROR,
 		'key-spacing': ERROR,
 		'linebreak-style': ERROR,
-		'lines-between-class-members': ERROR,
+		'lines-between-class-members': [ERROR,
+			'always',
+			{ 'exceptAfterSingleLine': true }],
 		'max-depth': ERROR,
 		'new-cap': [ERROR, { 'capIsNewExceptionPattern': '$.*' }],
 		'new-parens': ERROR,
@@ -181,11 +185,11 @@ module.exports = {
 		'jsdoc/check-types': ERROR,
 		'jsdoc/implements-on-classes': ERROR,
 		'jsdoc/match-description': [ERROR, {
-			matchDescription: '^[A-Z].*\\.',
+			matchDescription: '^([A-Z].+ (.|\\n)+[.?!])?$',
 			tags: {
-				param: '^[A-Z_].*\\.$',
-				property: '^([A-Z_].*\\.)?$',
-				returns: '^([A-Z_].*\\.)?$'
+				param: true,
+				property: true,
+				returns: true
 			}
 		}],
 		'jsdoc/newline-after-description': ERROR,
@@ -194,10 +198,22 @@ module.exports = {
 		'jsdoc/require-description': ERROR,
 		'jsdoc/require-description-complete-sentence': OFF,
 		'jsdoc/require-example': OFF,
-		'jsdoc/require-hyphen-before-param-description': ERROR,
-		'jsdoc/require-jsdoc': ERROR,
+		'jsdoc/require-hyphen-before-param-description': [ERROR,
+			'always',
+			{ 'tags': { 'property': 'always' } }],
+		'jsdoc/require-jsdoc': [ERROR, {
+			contexts: [
+				'ClassDeclaration',
+				'ClassExpression',
+				'MethodDefinition'
+			],
+			publicOnly: true,
+			checkConstructors: false,
+			checkGetters: true,
+			checkSetters: 'no-getter'
+		}],
 		'jsdoc/require-param': ERROR,
-		'jsdoc/require-param-description': ERROR,
+		'jsdoc/require-param-description': OFF,
 		'jsdoc/require-param-name': ERROR,
 		'jsdoc/require-param-type': ERROR,
 		'jsdoc/require-returns': ERROR,
@@ -296,7 +312,11 @@ module.exports = {
 				'args': false,
 				'conf': false,
 				'dev': false,
-				'prod': false
+				'prod': false,
+				'doc': false,
+				'docs': false,
+				'param': false,
+				'params': false
 			}
 		}],
 		'unicorn/string-content': OFF,
