@@ -1,5 +1,7 @@
 const testRunner = require('test-runner-config');
 const isTravis = require('is-travis');
+const webpack = require('webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
 
 const singleRun = process.argv.includes('--single-run');
@@ -79,35 +81,12 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 			},
 			webpack: {
 				mode: singleRun ? 'production' : 'development',
-				optimization: {
-					splitChunks: {
-						cacheGroups: {
-							vendor: {
-								test: /node_modules/u,
-								name: 'vendor',
-								maxSize: 244000,
-								chunks: 'all'
-							}
-						}
-					}
-				},
+				plugins: [
+					new webpack.NormalModuleReplacementPlugin(/\.(gif|png|svg|jpg|jpeg|css|less)$/u, 'node-noop'),
+					new ESLintPlugin({ threads: true })
+				],
 				module: {
 					rules: [{
-						test: /\.less$/u,
-						loader: 'null-loader'
-					}, {
-						test: /\.js$/u,
-						enforce: 'pre',
-						exclude: /node_modules/u,
-						use: [{
-							loader: 'eslint-loader',
-							options: {
-								cache: false,
-								emitWarning: true,
-								emitError: true
-							}
-						}]
-					}, {
 						test: /\.js/u,
 						loader: 'babel-loader'
 					}]

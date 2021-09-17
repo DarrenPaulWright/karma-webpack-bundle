@@ -1,4 +1,5 @@
 const testRunner = require('test-runner-config');
+const webpack = require('webpack');
 const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
 
 /**
@@ -32,23 +33,11 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 			files: files.files,
 			tests: files.tests,
 			postprocessor: wallaby.postprocessors.webpack({
-				optimization: {
-					splitChunks: {
-						cacheGroups: {
-							vendor: {
-								test: /node_modules/u,
-								name: 'vendor',
-								maxSize: 244000,
-								chunks: 'all'
-							}
-						}
-					}
-				},
+				plugins: [
+					new webpack.NormalModuleReplacementPlugin(/\.(gif|png|svg|jpg|jpeg|css|less)$/u, 'node-noop')
+				],
 				module: {
 					rules: [{
-						test: /\.less$/u,
-						loader: 'null-loader'
-					}, {
 						test: /\.js/u,
 						loader: 'babel-loader'
 					}]
@@ -59,7 +48,8 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 				window.__moduleBundler.loadTests();
 			},
 			lowCoverageThreshold: 100,
-			...settings
+			...settings,
+			trace: true
 		};
 	};
 };
