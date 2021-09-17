@@ -40,9 +40,51 @@ benchmark('how fast is this', () => {
 }, benchSettings);
 ```
 
+<br><a name="eslintrcBench"></a>
+
+## eslintrcBench : <code>object</code>
+> An eslint config object that overrides various rules from the main config for bench files.
+
+**Example**  
+Create a file in your bench directory called .eslintrc.cjs:
+
+```javascript
+const { eslintrcBench } = require('karma-webpack-bundle');
+
+module.exports = eslintrcBench;
+```
+
+<br><a name="eslintrc"></a>
+
+## eslintrc : <code>object</code>
+> An eslint config object intended to live in the root of your project.
+
+**Example**  
+Create a file in the root of your project called .eslintrc.cjs:
+
+```javascript
+const { eslintrc } = require('karma-webpack-bundle');
+
+module.exports = eslintrc;
+```
+
+<br><a name="eslintrcTests"></a>
+
+## eslintrcTests : <code>object</code>
+> An eslint config object that overrides various rules from the main config for test files.
+
+**Example**  
+Create a file in your tests directory called .eslintrc.cjs:
+
+```javascript
+const { eslintrcTests } = require('karma-webpack-bundle');
+
+module.exports = eslintrcTests;
+```
+
 <br><a name="formatBenchmark"></a>
 
-## formatBenchmark ⇒ <code>string</code>
+## formatBenchmark(benchmark, browser, config) ⇒ <code>string</code>
 > A plugin for the karma-benchmarkjs-reporter formatBenchmark option. Only current difference with the default formatter is the hz number is passed through toLocaleString to make the number more readable. This is used in karmaBenchConfig.
 
 
@@ -55,7 +97,7 @@ benchmark('how fast is this', () => {
 
 <br><a name="karmaBenchConfig"></a>
 
-## karmaBenchConfig ⇒ <code>function</code>
+## karmaBenchConfig([settings]) ⇒ <code>function</code>
 > Returns a config function that can be used with karma-benchmark. Sets up karma-benchmark to run in Chrome headless with karma-benchmarkjs-reporter (with the local formatBenchmark formatter), and webpack in production mode. Looks for files in a bench directory that match \*\*\/\*.bench.js.
 
 
@@ -86,7 +128,7 @@ npm run bench
 
 <br><a name="karmaConfig"></a>
 
-## karmaConfig ⇒ <code>function</code>
+## karmaConfig([testRunnerConfig], [settings]) ⇒ <code>function</code>
 > Returns a config function that can be used with karma. Sets up karma to run in Chrome headless and Firefox headless with mocha and karma-mocha-reporter.
 > 
 > If --single-run is provided then webpack runs in production mode, otherwise it runs in dev mode.
@@ -102,7 +144,7 @@ npm run bench
 | [settings] | <code>object</code> | Overrides any of the provided settings. |
 
 **Example**  
-create a file in the root of your project called karma.conf.js:
+Create a file in the root of your project called karma.conf.js:
 
 ```javascript
 const { karmaConfig } = require('karma-webpack-bundle');
@@ -125,7 +167,7 @@ npm test
 
 <br><a name="wallabyConfig"></a>
 
-## wallabyConfig ⇒ <code>function</code>
+## wallabyConfig([testRunnerConfig], [settings]) ⇒ <code>function</code>
 > Returns a config function that can be used with [wallaby](https://wallabyjs.com/). Sets the test framework to mocha, runs in Chrome headless, and sets up webpack similar to the karma config.
 > 
 > By default it Looks for test files in a tests directory that match *.test.js. For source files it looks for index.js, and *.js files in a src directory or lib directory.
