@@ -26,30 +26,39 @@ const defaultTestRunnerConfig = require('./defaultTestRunnerConfig.js');
 module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings = {}) {
 	const files = testRunner.getWallabyFiles(testRunnerConfig);
 
+	if (settings.trace === true) {
+		console.log('testRunner:', files);
+	}
+
 	return function(wallaby) {
 		return {
 			testFramework: 'mocha',
-			env: { kind: 'chrome' },
+			env: {
+				kind: 'chrome'
+			},
 			files: files.files,
 			tests: files.tests,
 			postprocessor: wallaby.postprocessors.webpack({
+				optimization: {
+					minimize: false
+				},
 				plugins: [
 					new webpack.NormalModuleReplacementPlugin(/\.(gif|png|svg|jpg|jpeg|css|less)$/u, 'node-noop')
 				],
 				module: {
 					rules: [{
 						test: /\.js/u,
+						exclude: /node_modules/u,
 						loader: 'babel-loader'
 					}]
-				},
-				devtool: 'source-map'
+				}
 			}),
 			setup() {
 				window.__moduleBundler.loadTests();
 			},
 			lowCoverageThreshold: 100,
-			...settings,
-			trace: true
+			workers: { restart: true },
+			...settings
 		};
 	};
 };

@@ -81,6 +81,9 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 			},
 			webpack: {
 				mode: singleRun ? 'production' : 'development',
+				optimization: {
+					minimize: false
+				},
 				plugins: [
 					new webpack.NormalModuleReplacementPlugin(/\.(gif|png|svg|jpg|jpeg|css|less)$/u, 'node-noop'),
 					new ESLintPlugin({ threads: true })
@@ -88,14 +91,11 @@ module.exports = function(testRunnerConfig = defaultTestRunnerConfig, settings =
 				module: {
 					rules: [{
 						test: /\.js/u,
+						exclude: /node_modules/u,
 						loader: 'babel-loader'
 					}]
 				},
 				watch: !singleRun
-			},
-			webpackServer: {
-				noInfo: true,
-				stats: 'errors-only'
 			},
 			...settings
 		});

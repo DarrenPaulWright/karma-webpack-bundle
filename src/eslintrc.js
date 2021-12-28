@@ -325,7 +325,7 @@ module.exports = {
 		'mocha/handle-done-callback': ERROR,
 		'mocha/max-top-level-suites': [ERROR, { 'limit': 1 }],
 		'mocha/no-async-describe': ERROR,
-		'mocha/no-exclusive-tests': ERROR,
+		'mocha/no-exclusive-tests': WARN,
 		'mocha/no-global-tests': ERROR,
 		'mocha/no-hooks': OFF,
 		'mocha/no-hooks-for-single-case': ERROR,
