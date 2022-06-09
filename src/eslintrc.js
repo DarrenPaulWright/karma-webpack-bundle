@@ -16,7 +16,7 @@ const { OFF, WARN, ERROR } = require('./eslintErrorTypes.js');
  * @type {object}
  */
 module.exports = {
-	parser: 'babel-eslint',
+	parser: '@babel/eslint-parser',
 	plugins: [
 		'babel',
 		'jsdoc',
@@ -31,8 +31,9 @@ module.exports = {
 		'mocha': true
 	},
 	parserOptions: {
-		'ecmaVersion': 6,
-		'sourceType': 'module'
+		ecmaVersion: 8,
+		requireConfigFile: false,
+		sourceType: 'module'
 	},
 	extends: [
 		'eslint:recommended'
@@ -185,7 +186,7 @@ module.exports = {
 		'jsdoc/check-types': ERROR,
 		'jsdoc/implements-on-classes': ERROR,
 		'jsdoc/match-description': [ERROR, {
-			matchDescription: '^([A-Z].+ (.|\\n)+[.?!])?$',
+			matchDescription: '^([A-Z].+ (.|\\n)+[.?!`][\n]?)?$',
 			tags: {
 				param: true,
 				property: true,
